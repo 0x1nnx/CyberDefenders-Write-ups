@@ -1,3 +1,5 @@
+# FakeGPT Write-up By Inna Gyurova (0x1nnx)
+
 https://cyberdefenders.org/blueteam-ctf-challenges/fakegpt/
 
 In this investigation, I analyzed a potentially malicious browser extension to understand its behavior, identify its data collection techniques, and investigate how it handles and transmits sensitive user information.
