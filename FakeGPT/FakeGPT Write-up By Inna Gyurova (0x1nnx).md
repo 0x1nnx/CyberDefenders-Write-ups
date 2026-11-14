@@ -15,7 +15,7 @@ While reviewing the output, I noticed a suspicious encoded string stored in a va
 
 The encoding method that was used can be seen in the code and I was able to understand it by looking at the encoded string which ended with == . 
 
-![[Pasted image 20261108114411.png]]
+![[Pasted image 20261108114411.png]](https://github.com/0x1nnx/CyberDefenders-Write-ups/blob/a8d544b1bf7833099435a246385e5e32fae1b4fd/FakeGPT/Pasted%20image%2020261108114411.png)
 
 ### **Task 2: Identify the website targeted by the extension**
 
@@ -25,7 +25,7 @@ The encoding method that was used can be seen in the code and I was able to unde
 
 After identifying the encoded string in the previous step, I decoded it to reveal the website being targeted by the extension.
 
-![[Pasted image 20261108113615.png]]
+![[Pasted image 20261108113615.png]](https://github.com/0x1nnx/CyberDefenders-Write-ups/blob/a8d544b1bf7833099435a246385e5e32fae1b4fd/FakeGPT/Pasted%20image%2020261108113615.png)
 
 
 ### **Task 3: Identify the HTML element used for data exfiltration**
@@ -38,7 +38,7 @@ During the analysis, I found code that creates a new HTML element dynamically, a
 
 By examining the element creation and the property assignment, I could determine which HTML element the extension uses to transmit the information.
 
-![[Cybersecurity/CTF/Writeups/CyberDefenders/FakeGPT/Pasted image 20261108114050.png]]
+![[Cybersecurity/CTF/Writeups/CyberDefenders/FakeGPT/Pasted image 20261108114050.png]](https://github.com/0x1nnx/CyberDefenders-Write-ups/blob/a8d544b1bf7833099435a246385e5e32fae1b4fd/FakeGPT/Pasted%20image%2020261108114050.png)
 
 ### **Task 4: Identify the first condition that causes the extension to deactivate**
 
@@ -52,7 +52,7 @@ I focused on the environment-checking logic, particularly the conditions used to
 
 The code contains multiple checks combined in a conditional statement.
 
-![[Pasted image 20261108121020.png]]
+![[Pasted image 20261108121020.png]](https://github.com/0x1nnx/CyberDefenders-Write-ups/blob/a8d544b1bf7833099435a246385e5e32fae1b4fd/FakeGPT/Pasted%20image%2020261108121020.png)
 
 ### **Task 5: Identify the event used to monitor form submissions**
 
@@ -66,7 +66,7 @@ I paid particular attention to the listener associated with form submission. By 
 
 The code uses the submitted form data to retrieve information from specific input fields.
 
-![[Pasted image 20261108115736.png]]
+![[Pasted image 20261108115736.png]](https://github.com/0x1nnx/CyberDefenders-Write-ups/blob/a8d544b1bf7833099435a246385e5e32fae1b4fd/FakeGPT/Pasted%20image%2020261108115736.png)
 
 ### **Task 6: Identify the API or method used to monitor keystrokes**
 
@@ -80,7 +80,7 @@ I looked for the event registration associated with keyboard interactions and in
 
 The callback accesses information from the keyboard event and passes the collected information to the extension's credential-exfiltration functionality.
 
-![[Pasted image 20261108121820.png]]
+![[Pasted image 20261108121820.png]](https://github.com/0x1nnx/CyberDefenders-Write-ups/blob/a8d544b1bf7833099435a246385e5e32fae1b4fd/FakeGPT/Pasted%20image%2020261108121820.png)
 
 ### **Task 7: Identify the domain used to transmit stolen information**
 
@@ -94,7 +94,7 @@ I focused on the destination used when sending the encrypted information. By exa
 
 This step helped establish where the extension sends the information after collecting and processing it.
 
-![[Pasted image 20261108120121.png]]
+![[Pasted image 20261108120121.png]](https://github.com/0x1nnx/CyberDefenders-Write-ups/blob/a8d544b1bf7833099435a246385e5e32fae1b4fd/FakeGPT/Pasted%20image%2020261108120121.png)
 
 ### **Task 8: Identify the function responsible for credential exfiltration**
 
@@ -108,7 +108,7 @@ I looked for a function that accepts the username and password as parameters and
 
 I then followed the execution flow to understand how the credentials are passed to the encryption functionality and eventually transmitted to the external server.
 
-![[Pasted image 20261108120729.png]]
+![[Pasted image 20261108120729.png]](https://github.com/0x1nnx/CyberDefenders-Write-ups/blob/a8d544b1bf7833099435a246385e5e32fae1b4fd/FakeGPT/Pasted%20image%2020261108120729.png)
 
 ### **Task 9: Identify the encryption algorithm used before transmission**
 
@@ -122,7 +122,7 @@ I focused on the cryptographic library calls and inspected how the encryption ke
 
 By identifying the cryptographic method referenced in the code, I could determine which algorithm the extension uses to encrypt the collected data.
 
-![[Pasted image 20261108120511.png]]
+![[Pasted image 20261108120511.png]](https://github.com/0x1nnx/CyberDefenders-Write-ups/blob/a8d544b1bf7833099435a246385e5e32fae1b4fd/FakeGPT/Pasted%20image%2020261108120511.png)
 
 ### **Task 10: Identify how the extension accesses session-related information**
 
@@ -136,7 +136,7 @@ The answer can be seen inside `manifest.json` in permissions.
 
 ## **Conclusion**
 
-Through static analysis of the browser extension's `app.js` file using Radare2, I was able to investigate its behavior and trace the main stages of its operation.
+Through static analysis of the browser extension's files using Radare2, I was able to investigate its behavior and trace the main stages of its operation.
 
 The analysis involved inspecting strings, identifying encoded data, examining conditional statements, reviewing event listeners, and following the execution flow of the credential collection and transmission functions.
 
